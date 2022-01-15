@@ -21,7 +21,9 @@ function performAction(e) {
      //read zip, temp value from GET response and pass to POST call
     postData("/addEntry", {zip:sZip, temperature:oData.main.temp, date:newDate, feelings:sFeeling});
     //data.main.feels_like
-    }).then(updateUI())
+    }).then(function(data) {      
+      updateUI();
+    })
 };
 
 /* Function to GET Web API Data*/
@@ -73,10 +75,10 @@ const postData = async ( url = '', data = {})=>{
     const request = await fetch('/all');
     try{
       const allData = await request.json();
-      document.getElementById('date').innerHTML = allData[0].date;
-      document.getElementById('temp').innerHTML = allData[0].temperature;
-      document.getElementById('content').innerHTML = allData[0].feelings;
-      document.getElementById('zipCode').innerHTML = allData[0].zip;
+      document.getElementById('date').innerHTML = allData.date;
+      document.getElementById('temp').innerHTML = allData.temperature;
+      document.getElementById('content').innerHTML = allData.feelings;
+      document.getElementById('zipCode').innerHTML = allData.zip;
     }catch(error){
       console.log("error", error);
     }
