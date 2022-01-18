@@ -6,7 +6,7 @@ const apiKey = '1b6fe57c916989b752fb44e751495682&units=imperial';
 // Event listener to add function to existing HTML DOM element
 const element = document.getElementById('generate').addEventListener('click', performAction);
 let d = new Date();
-let newDate = d.getMonth()+'.'+ d.getDate()+'.'+ d.getFullYear();
+let newDate = (d.getMonth()+1) +'.'+ d.getDate()+'.'+ d.getFullYear();
 
 /* Function called by event listener */
 function performAction(e) {
